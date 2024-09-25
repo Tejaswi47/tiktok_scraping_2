@@ -1,6 +1,8 @@
 from tiktok_scraping import Connection
 import time
 from flask import Flask, jsonify
+import os
+
 
 app = Flask(__name__)
 
@@ -45,7 +47,10 @@ def search_user(username):
 # {'username': username,'nickname}
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=False, host='0.0.0.0', port=port)
+    
     
     
 
